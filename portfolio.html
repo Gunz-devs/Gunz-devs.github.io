@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gunasekaran S — Lead Robotics Engineer</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0d1117; --bg2: #161b22; --bg3: #1c2230;
+    --border: rgba(99,110,123,0.3);
+    --text: #e6edf3; --muted: #8b949e;
+    --accent: #58a6ff; --accent2: #3fb950;
+    --tag-bg: rgba(88,166,255,0.1); --tag-color: #58a6ff;
+  }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 6%; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: rgba(13,17,23,0.88); backdrop-filter: blur(8px); z-index: 100; }
+  .logo { font-family: 'Courier New', monospace; font-size: 1.05rem; color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { color: var(--muted); font-size: 0.9rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+  section { padding: 5rem 6%; max-width: 1100px; margin: 0 auto; }
+
+  .hero { min-height: 88vh; display: flex; flex-direction: column; justify-content: center; padding-top: 3rem; }
+  .hero-label { font-family: 'Courier New', monospace; color: var(--accent2); font-size: 0.95rem; margin-bottom: 1rem; }
+  .hero h1 { font-size: clamp(2.2rem, 5.5vw, 4rem); font-weight: 700; line-height: 1.15; margin-bottom: 1rem; }
+  .hero h1 span { color: var(--accent); }
+  .hero p { font-size: 1.05rem; color: var(--muted); max-width: 540px; margin-bottom: 2.2rem; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn { padding: 0.7rem 1.5rem; border-radius: 6px; font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.4rem; }
+  .btn-primary { background: var(--accent); color: #0d1117; border: none; }
+  .btn-primary:hover { background: #79c0ff; text-decoration: none; }
+  .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+  .hero-code { margin-top: 3rem; font-family: 'Courier New', monospace; font-size: 0.85rem; color: var(--muted); border-left: 3px solid var(--accent); padding-left: 1rem; }
+  .c-green { color: var(--accent2); } .c-blue { color: var(--accent); } .c-str { color: #ffa657; }
+
+  .section-title { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .section-subtitle { color: var(--muted); font-size: 0.95rem; margin-bottom: 2.5rem; }
+
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 1rem; }
+  .about-highlights { display: flex; flex-direction: column; gap: 1rem; }
+  .highlight-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; display: flex; align-items: flex-start; gap: 0.8rem; }
+  .highlight-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .highlight-card h4 { font-size: 0.95rem; font-weight: 600; }
+  .highlight-card p { font-size: 0.85rem; color: var(--muted); margin: 0; }
+
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .project-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; }
+  .project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.8rem; }
+  .project-icon { font-size: 1.6rem; }
+  .role-badge { font-size: 0.72rem; color: var(--accent2); background: rgba(63,185,80,0.1); padding: 0.2rem 0.6rem; border-radius: 4px; white-space: nowrap; }
+  .project-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .project-card p { font-size: 0.88rem; color: var(--muted); flex: 1; margin-bottom: 1rem; }
+  .tech-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; }
+  .tag { background: var(--tag-bg); color: var(--tag-color); font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 4px; font-family: 'Courier New', monospace; }
+
+  .exp-timeline { display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 3rem; }
+  .exp-card { background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1.2rem 1.5rem; }
+  .exp-card h3 { font-size: 1rem; font-weight: 600; }
+  .exp-card .company { color: var(--accent); font-size: 0.9rem; }
+  .exp-card .period { color: var(--muted); font-size: 0.82rem; margin-top: 0.2rem; }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 1rem; }
+  .skill-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center; transition: border-color 0.2s; }
+  .skill-card:hover { border-color: var(--accent); }
+  .skill-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+  .skill-name { font-size: 0.82rem; color: var(--muted); }
+
+  .contact-wrapper { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 3rem; text-align: center; }
+  .contact-wrapper h2 { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .contact-wrapper p { color: var(--muted); max-width: 440px; margin: 0 auto 2rem; }
+  .contact-links { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
+  .contact-link { display: flex; align-items: center; gap: 0.5rem; color: var(--muted); background: var(--bg3); border: 1px solid var(--border); padding: 0.6rem 1.2rem; border-radius: 6px; font-size: 0.9rem; transition: all 0.2s; }
+  .contact-link:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; }
+
+  footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); }
+  footer span { color: var(--accent); }
+
+  @media (max-width: 640px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .nav-links { gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">&lt;gunasekaran /&gt;</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-label">// Lead Robotics Engineer 🤖</div>
+  <h1>Building robots that<br/>make life <span>better</span>.</h1>
+  <p>8+ years of experience in autonomous robotics — from navigation and mapping to full software architecture for real-world deployed systems.</p>
+  <div class="hero-btns">
+    <a href="#projects" class="btn btn-primary">View my projects →</a>
+    <a href="#contact" class="btn btn-outline">Get in touch</a>
+  </div>
+  <div class="hero-code" style="margin-top: 3rem;">
+    <div><span class="c-green">const</span> engineer = {</div>
+    <div>&nbsp;&nbsp;name: <span class="c-str">"Gunasekaran S"</span>,</div>
+    <div>&nbsp;&nbsp;role: <span class="c-str">"Lead Robotics Engineer"</span>,</div>
+    <div>&nbsp;&nbsp;stack: [<span class="c-str">"ROS2"</span>, <span class="c-str">"Python"</span>, <span class="c-str">"C++"</span>, <span class="c-str">"Nav2"</span>],</div>
+    <div>&nbsp;&nbsp;available: <span class="c-blue">true</span></div>
+    <div>};</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-title">About me</div>
+  <div class="section-subtitle">Engineer, innovator, robot whisperer</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm Gunasekaran, a Lead Robotics Engineer with 8+ years of hands-on experience building autonomous robots for real-world environments — airports, hospitals, malls, warehouses, and defence.</p>
+      <p>My work spans the full software stack: from SLAM and localization to navigation planners, fleet management, and embedded hardware integration on platforms like Jetson TX2, Raspberry Pi, and Intel NUC.</p>
+      <p>My goal is simple — to utilize technical and creative skills to build products that make every human life better, productive, and protective.</p>
+    </div>
+    <div class="about-highlights">
+      <div class="highlight-card">
+        <div class="highlight-icon">🤖</div>
+        <div>
+          <h4>8+ years in robotics</h4>
+          <p>Across autonomous mobility, defence systems, and service robots.</p>
+        </div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">🗺️</div>
+        <div>
+          <h4>Full-stack robotics architect</h4>
+          <p>SLAM, navigation, localization, and application development end-to-end.</p>
+        </div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">🎓</div>
+        <div>
+          <h4>B.E. Mechatronics — 9.04 CGPA</h4>
+          <p>K.S. Rangasamy College of Technology, 2018.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-title">Experience</div>
+  <div class="section-subtitle">Where I've worked</div>
+  <div class="exp-timeline">
+    <div class="exp-card">
+      <h3>Senior Software Engineer → Lead Robotics Engineer</h3>
+      <div class="company">GOAT Robotics PVT. LTD.</div>
+      <div class="period">Sep 2019 – Present · 6+ years</div>
+    </div>
+    <div class="exp-card">
+      <h3>Automation & Embedded Engineer</h3>
+      <div class="company">AUTOBOTS</div>
+      <div class="period">May 2018 – Aug 2019 · 1.6 years</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-title">Professional projects</div>
+  <div class="section-subtitle">Real robots, real deployments</div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">♿</div>
+        <span class="role-badge">Software Lead</span>
+      </div>
+      <h3>Autonomous Wheelchair — US</h3>
+      <p>Carries passengers across airports, guiding them autonomously to their destination. Full software architecture & development.</p>
+      <div class="tech-tags"><span class="tag">ROS2</span><span class="tag">Nav2</span><span class="tag">SLAM</span><span class="tag">Python</span></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">🛡️</div>
+        <span class="role-badge">Team Lead</span>
+      </div>
+      <h3>Rut Management System — DRDO</h3>
+      <p>Measures the RUT profile of terrain on MBT vehicles for Indian defence. Full software architecture & development.</p>
+      <div class="tech-tags"><span class="tag">C++</span><span class="tag">Jetson TX2</span><span class="tag">Embedded</span><span class="tag">Postgres</span></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">🔒</div>
+        <span class="role-badge">Team Lead</span>
+      </div>
+      <h3>Indoor / Outdoor Patrolling Robot</h3>
+      <p>Patrols condos, shopping complexes, and public spaces to ensure security. Covers both indoor and outdoor environments autonomously.</p>
+      <div class="tech-tags"><span class="tag">ROS2</span><span class="tag">AMCL</span><span class="tag">TEB Planner</span><span class="tag">Python</span></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">🧹</div>
+        <span class="role-badge">Software Lead</span>
+      </div>
+      <h3>Autonomous Cleaning Robot</h3>
+      <p>Cleans floors in large-scale venues like shopping malls and warehouses. Developed the full software stack from scratch.</p>
+      <div class="tech-tags"><span class="tag">ROS1</span><span class="tag">Gmapping</span><span class="tag">DWA</span><span class="tag">Raspberry Pi</span></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">👋</div>
+        <span class="role-badge">Software Lead</span>
+      </div>
+      <h3>Reception Robot</h3>
+      <p>Interacts with visitors and guides them around schools and offices. Full software stack including interaction and navigation modules.</p>
+      <div class="tech-tags"><span class="tag">ROS2</span><span class="tag">Nav2</span><span class="tag">Intel NUC</span><span class="tag">Python</span></div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">☢️</div>
+        <span class="role-badge">Software Lead</span>
+      </div>
+      <h3>UV-C Disinfection Robot</h3>
+      <p>Autonomously disinfects areas from viruses and bacteria using UV-C radiation. Developed the complete software stack.</p>
+      <div class="tech-tags"><span class="tag">ROS2</span><span class="tag">RTAB-Map</span><span class="tag">Jetson Nano</span><span class="tag">C++</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-title">Tech stack</div>
+  <div class="section-subtitle">Tools and technologies I work with</div>
+  <div class="skills-grid">
+    <div class="skill-card"><div class="skill-icon">🐍</div><div class="skill-name">Python</div></div>
+    <div class="skill-card"><div class="skill-icon">⚙️</div><div class="skill-name">C++</div></div>
+    <div class="skill-card"><div class="skill-icon">🤖</div><div class="skill-name">ROS2 Humble</div></div>
+    <div class="skill-card"><div class="skill-icon">🤖</div><div class="skill-name">ROS1 Noetic</div></div>
+    <div class="skill-card"><div class="skill-icon">🗺️</div><div class="skill-name">SLAM / Mapping</div></div>
+    <div class="skill-card"><div class="skill-icon">📍</div><div class="skill-name">Localization</div></div>
+    <div class="skill-card"><div class="skill-icon">🧭</div><div class="skill-name">Nav2 / DWA / TEB</div></div>
+    <div class="skill-card"><div class="skill-icon">🖥️</div><div class="skill-name">Jetson TX2/Nano</div></div>
+    <div class="skill-card"><div class="skill-icon">🫐</div><div class="skill-name">Raspberry Pi</div></div>
+    <div class="skill-card"><div class="skill-icon">🐘</div><div class="skill-name">PostgreSQL</div></div>
+    <div class="skill-card"><div class="skill-icon">🐙</div><div class="skill-name">GitHub / GitLab</div></div>
+    <div class="skill-card"><div class="skill-icon">💻</div><div class="skill-name">VS Code</div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrapper">
+    <h2>Let's build something great</h2>
+    <p>Open to new opportunities in robotics and autonomous systems. Feel free to reach out!</p>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:gunakresh@gmail.com">✉️ gunakresh@gmail.com</a>
+      <a class="contact-link" href="tel:+917200570750">📞 +91 72005 70750</a>
+      <a class="contact-link" href="https://www.linkedin.com/in/gunasekaran-singaravelu-5892a0147" target="_blank">💼 LinkedIn</a>
+      <a class="contact-link" href="https://github.com/Gunz-devs" target="_blank">🐙 GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed & built · <span>Gunasekaran S</span> · Lead Robotics Engineer · 2026</p>
+</footer>
+
+</body>
+</html>
